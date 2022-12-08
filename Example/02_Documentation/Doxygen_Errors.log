@@ -1,0 +1,4 @@
+C:/Users/igork/OneDrive/Desktop/Example/01_Source_Code/WDG/01_inc/WDG.h:9: warning: WDG_vInit has @param documentation sections but no arguments
+C:/Users/igork/OneDrive/Desktop/Example/01_Source_Code/WDG/01_inc/WDG.h:9: warning: found documented return type for WDG_vInit that does not return anything
+C:/Users/igork/OneDrive/Desktop/Example/01_Source_Code/WDG/01_inc/WDG.h:9: warning: WDG_vInit has @param documentation sections but no arguments
+C:/Users/igork/OneDrive/Desktop/Example/01_Source_Code/WDG/01_inc/WDG.h:9: warning: found documented return type for WDG_vInit that does not return anything
