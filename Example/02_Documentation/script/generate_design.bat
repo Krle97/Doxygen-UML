@@ -1,3 +1,8 @@
+:: delete old image and CHM file(s)
+DEL /F .\*.chm
+DEL /F .\*.chw
+DEL /F .\*.log
+
 :: set tools
 :: either use environment variables or hard-coded paths
 SET GRAPHVIZ_DOT_EXE=%graphviz_dot%
@@ -32,10 +37,6 @@ SET SOURCE_PATH1=%PROJECT_BASE%/01_Source_Code/WDG
 SET SOURCE_PATH=%SOURCE_PATH1% %MARKDOWN_FILE%
 SET EXLUDE_PATH=""
 
-:: delete old image and CHM file(s)
-DEL /F .\*.chm
-DEL /F .\*.chw
-DEL /F .\*.log
 
 :: call doxygen 
 %DOXYGEN_EXE% Doxyfile.doxy 2> Doxygen_Errors.log
