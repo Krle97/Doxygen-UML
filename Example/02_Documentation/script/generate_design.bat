@@ -1,8 +1,12 @@
 :: set tools
-SET GRAPHVIZ_DOT_EXE=%graphviz_dot%
+:: either use environment variables or hard-coded paths
+IF not defined GRAPHVIZ_DOT_EXE GOTO :GRAPHVIZ_undef
 SET DOXYGEN_EXE=%doxygen%
+IF not defined DOXYGEN_EXE GOTO :DOXYGEN_undef
 SET PLANTUML_JAR=%plantuml%
+IF not defined PLANTUML_JAR GOTO :PLANTUML_undef
 SET HHC_EXE=%hhc%
+IF not defined HHC_EXE GOTO :HHC_undef
 
 :: naming
 SET PRJ_NAME=WatchDog Module
@@ -33,3 +37,20 @@ DEL /F .\*.log
 
 :: delete html folder
 RD /s/q %CD%\html
+GOTO:eof
+
+:GRAPHVIZ_undef
+ECHO Either 'graphviz_dot' envirnoment variable is undefined or GRAPHVIZ_DOT_EXE is not SET. > ErrorLog.log
+GOTO:eof
+
+:DOXYGEN_undef
+ECHO Either 'doxygen' envirnoment variable is undefined or DOXYGEN_EXE is not SET. > ErrorLog.log
+GOTO:eof
+
+:PLANTUML_undef
+ECHO Either 'plantuml' envirnoment variable is undefined or PLANTUML_JAR is not SET. > ErrorLog.log
+GOTO:eof
+
+:HHC_undef
+ECHO Either 'hhc' envirnoment variable is undefined or HHC_EXE is not SET. > ErrorLog.log
+GOTO:eof
