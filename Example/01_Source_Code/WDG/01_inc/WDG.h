@@ -9,15 +9,15 @@
 /// This function performs complete configuration for the WatchDog module
 ///
 /// @pre
-/// - This function must be called at the startup of the ECU only once.
+///   This function must be called at the startup of the ECU only once.
 /// @post
-/// - WatchDog counter must be reseted periodically in order to avoid time-out
+///   WatchDog counter must be reseted periodically in order to avoid time-out
 /// @param
-/// - None
+///   None
 /// @return
-/// - None
+///   None
 /// @globals
-/// - None
+///   None
 /// @callsequence
 ///   @startuml "WDG_vInit.png"
 ///   title "Sequence diagram for function WDG_vInit"
@@ -53,8 +53,9 @@
 ///     ResetMCU --
 ///     WDG ++
 ///   end opt
+///     <- WDG: //none//
+///     WDG --
 ///   @enduml
-///
 void WDG_vInit();
 
 #endif //WDG_H

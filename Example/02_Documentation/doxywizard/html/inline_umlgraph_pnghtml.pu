@@ -1,0 +1,128 @@
+@startuml inline_umlgraph_1.png
+  title "Sequence diagram for function WDG_vInit"
+  ->WDG: WDG_vInit function call
+  WDG ++
+  WDG -> SYS: SYS_u32GetTimeCurrent()
+  WDG --
+  SYS ++
+  rnote over SYS #Cyan: Get current system time
+  SYS -> WDG: //u32StartTime//
+  SYS --
+  WDG ++
+  rnote over WDG: Disable WatchDog module\nFollowing manufacturers advice:
+  WDG -> WDG: vWDGDisable()
+  loop While setup isn't successful and the time limit isn't breached:
+    rnote over WDG: Call WatchDog setup routine:
+    WDG -> WDG: boWatchDogSetupConfig():\nreturns success status
+    WDG -> SYS: SYS_u32GetTimeSince(u_StartTime)
+    WDG --
+    SYS ++
+    rnote over SYS #Cyan: Update time spent in the loop
+    SYS -> WDG: //u32CurrentTime//
+    SYS --
+    WDG ++
+  end loop
+  opt If setup wasn't successful:
+    WDG++
+    WDG -> ResetMCU: ResetMCU_vHardReset(ResetMCU_nWDG_INIT_FAILED)
+    WDG --
+    ResetMCU ++
+    rnote over ResetMCU #Yellow: Initiate hardware reset
+    ResetMCU -> WDG
+    ResetMCU --
+    WDG ++
+  end opt
+    <- WDG: //none//
+    WDG --
+@enduml
+@startuml inline_umlgraph_2.png
+    title "Sequence diagram for function boWDGSetupConfig"
+    ->WDG: boWDGSetupConfig()
+    WDG ++
+    rnote over WDG: Fetch data from global structure pWDG_stWatchDogConfig
+    WDG -> SYS: SYS_vDisableInterrupt()
+    WDG --
+    SYS ++
+    rnote over SYS: Disable global interrupts
+    SYS -> WDG: //none//
+    SYS --
+    WDG ++
+    rnote over WDG: Reset WatchDog timer
+    rnote over WDG: Clear WDRF in MCUSR
+    rnote over WDG: Write logical one to WDCE and WDE
+    rnote over WDG: Setup the WatchDog
+    opt If the value of WDTCSR is the same as the one from configuration:
+      rnote over WDG: boResult = boTRUE
+    end 
+    WDG -> SYS: SYS_vEnableInterruts()
+    WDG --
+    SYS ++
+    rnote over SYS: Enable global interrupts
+    SYS -> WDG: //none//
+    SYS --
+    WDG ++
+    <- WDG: //boResult//
+    WDG --
+@enduml
+@startuml inline_umlgraph_3.png
+    title "Sequence diagram for function vWDGDisable"
+    ->WDG: vWDGDisable() function call
+    WDG ++
+    WDG -> SYS: SYS_vDisableInterrupt()
+    WDG --
+    SYS ++
+    rnote over SYS: Disable global interrupts
+    SYS -> WDG: //none//
+    SYS --
+    WDG ++
+    rnote over WDG: Reset WatchDog timer
+    rnote over WDG: Clear WDRF in MCUSR
+    rnote over WDG: Write logical one to WDCE and WDE
+    rnote over WDG: Turn off WDT
+    WDG -> SYS: SYS_vEnableInterruts()
+    WDG --
+    SYS ++
+    rnote over SYS: Enable global interrupts
+    SYS -> WDG: //none//
+    SYS --
+    WDG ++
+    <- WDG: //none//
+    WDG --
+@enduml
+@startuml inline_umlgraph_4.png
+  title "Sequence diagram for function WDG_vInit"
+  ->WDG: WDG_vInit function call
+  WDG ++
+  WDG -> SYS: SYS_u32GetTimeCurrent()
+  WDG --
+  SYS ++
+  rnote over SYS #Cyan: Get current system time
+  SYS -> WDG: //u32StartTime//
+  SYS --
+  WDG ++
+  rnote over WDG: Disable WatchDog module\nFollowing manufacturers advice:
+  WDG -> WDG: vWDGDisable()
+  loop While setup isn't successful and the time limit isn't breached:
+    rnote over WDG: Call WatchDog setup routine:
+    WDG -> WDG: boWatchDogSetupConfig():\nreturns success status
+    WDG -> SYS: SYS_u32GetTimeSince(u_StartTime)
+    WDG --
+    SYS ++
+    rnote over SYS #Cyan: Update time spent in the loop
+    SYS -> WDG: //u32CurrentTime//
+    SYS --
+    WDG ++
+  end loop
+  opt If setup wasn't successful:
+    WDG++
+    WDG -> ResetMCU: ResetMCU_vHardReset(ResetMCU_nWDG_INIT_FAILED)
+    WDG --
+    ResetMCU ++
+    rnote over ResetMCU #Yellow: Initiate hardware reset
+    ResetMCU -> WDG
+    ResetMCU --
+    WDG ++
+  end opt
+    <- WDG: //none//
+    WDG --
+@enduml

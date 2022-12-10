@@ -1,0 +1,9 @@
+error: When enabling GENERATE_HTMLHELP the SEARCHENGINE option should be disabled. I'll adjust it for you.
+error: When enabling GENERATE_HTMLHELP the HTML_DYNAMIC_MENUS option should be disabled. I'll adjust it for you.
+error: When enabling 'GENERATE_HTMLHELP' the 'HTML_COLORSTYLE' option should be either 'LIGHT' or 'DARK' but has value 'AUTO_LIGHT'. I'll adjust it for you to 'LIGHT'.
+C:/Users/igork/OneDrive/Desktop/Example/01_Source_Code/WDG/01_inc/WDG.h:9: warning: WDG_vInit has @param documentation sections but no arguments
+C:/Users/igork/OneDrive/Desktop/Example/01_Source_Code/WDG/01_inc/WDG.h:9: warning: found documented return type for WDG_vInit that does not return anything
+C:/Users/igork/OneDrive/Desktop/Example/01_Source_Code/WDG/02_src/WDG.c:47: warning: boWDGSetupConfig has @param documentation sections but no arguments
+C:/Users/igork/OneDrive/Desktop/Example/01_Source_Code/WDG/02_src/WDG.c:7: warning: vWDGDisable has @param documentation sections but no arguments
+C:/Users/igork/OneDrive/Desktop/Example/01_Source_Code/WDG/01_inc/WDG.h:9: warning: WDG_vInit has @param documentation sections but no arguments
+C:/Users/igork/OneDrive/Desktop/Example/01_Source_Code/WDG/01_inc/WDG.h:9: warning: found documented return type for WDG_vInit that does not return anything
