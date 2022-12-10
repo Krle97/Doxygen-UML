@@ -1,5 +1,6 @@
 :: set tools
 :: either use environment variables or hard-coded paths
+SET GRAPHVIZ_DOT_EXE=%graphviz_dot%
 IF not defined GRAPHVIZ_DOT_EXE GOTO :GRAPHVIZ_undef
 SET DOXYGEN_EXE=%doxygen%
 IF not defined DOXYGEN_EXE GOTO :DOXYGEN_undef
