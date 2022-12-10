@@ -13,6 +13,9 @@ IF not defined HHC_EXE GOTO :HHC_undef
 SET PRJ_NAME=WatchDog Module
 SET CHM_FILE_NAME=WDG
 
+:: markdown
+SET MARKDOWN_FILE=markdown.md
+
 :: Set aliases (must be enclosed with "")
 SET ALIAS_1="callsequence=@par Call sequence:^^"
 SET ALIAS_2="globals=@par Globals:^^"
@@ -25,7 +28,8 @@ SET PROJECT_BASE=%CD%
 POPD
 
 :: set pathnames used by doxygen
-SET SOURCE_PATH="%PROJECT_BASE%/01_Source_Code/WDG"
+SET SOURCE_PATH1=%PROJECT_BASE%/01_Source_Code/WDG
+SET SOURCE_PATH=%SOURCE_PATH1% %MARKDOWN_FILE%
 SET EXLUDE_PATH=""
 
 :: delete old image and CHM file(s)
